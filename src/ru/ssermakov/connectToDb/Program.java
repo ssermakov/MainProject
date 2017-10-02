@@ -14,21 +14,19 @@ public class Program {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName(DRIVER_NAME);
-		System.out.println("test");
 		Connection conn = DriverManager.getConnection(CONNECTION_STRING);
 		
-		Scanner sc = new Scanner (System.in);
-		String line = sc.nextLine();
+//		Scanner sc = new Scanner (System.in);
+//		String line = sc.nextLine();
 		
 		String sql = "SELECT wo FROM return_objects";
 		PreparedStatement cmd = (PreparedStatement) conn.prepareStatement(sql);
-		cmd.setString(1, "%"+line+"%");
+//		cmd.setString(1, "%"+line+"%");
 		ResultSet res = cmd.executeQuery();
-		System.out.println("test");
 		while (res.next()) {
 			String wo = res.getString("wo");
 			
-			System.out.printf("%s", wo);
+			System.out.printf("%s \n", wo);
 		}
 		
 		res.close();
